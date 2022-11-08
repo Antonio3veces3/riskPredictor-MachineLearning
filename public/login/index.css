@@ -1,0 +1,15 @@
+body{
+    background-color: rgba(243, 243, 243, 0.877);
+}
+
+#divForm{
+    width: 30rem;
+    margin-top: 10rem;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+#btnSingIn{
+    width: 12rem;
+}
