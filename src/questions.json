@@ -1,0 +1,96 @@
+{
+  "data": [
+    {
+      "numberSection": 1,
+      "section": "Situacion familiar",
+      "questions": [
+        {
+          "numberQuestion": 1,
+          "question": "Pregunta 1"
+        },
+        {
+          "numberQuestion": 2,
+          "question": "Pregunta 2"
+        },
+        {
+          "numberQuestion": 3,
+          "question": "Pregunta 3"
+        },
+        {
+          "numberQuestion": 4,
+          "question": "Pregunta 4"
+        },
+        {
+          "numberQuestion": 5,
+          "question": "Pregunta 5"
+        },
+        {
+          "numberQuestion": 6,
+          "question": "Pregunta 6"
+        },
+        {
+          "numberQuestion": 7,
+          "question": "Pregunta 7"
+        },
+        {
+          "numberQuestion": 8,
+          "question": "Pregunta 8"
+        },
+        {
+          "numberQuestion": 9,
+          "question": "Pregunta 9"
+        },
+        {
+          "numberQuestion": 10,
+          "question": "Pregunta 10"
+        }
+      ]
+    },
+    {
+        "numberSection": 1,
+        "section": "Situacion escolar",
+        "questions": [
+          {
+            "numberQuestion": 1,
+            "question": "Pregunta 1"
+          },
+          {
+            "numberQuestion": 2,
+            "question": "Pregunta 2"
+          },
+          {
+            "numberQuestion": 3,
+            "question": "Pregunta 3"
+          },
+          {
+            "numberQuestion": 4,
+            "question": "Pregunta 4"
+          },
+          {
+            "numberQuestion": 5,
+            "question": "Pregunta 5"
+          },
+          {
+            "numberQuestion": 6,
+            "question": "Pregunta 6"
+          },
+          {
+            "numberQuestion": 7,
+            "question": "Pregunta 7"
+          },
+          {
+            "numberQuestion": 8,
+            "question": "Pregunta 8"
+          },
+          {
+            "numberQuestion": 9,
+            "question": "Pregunta 9"
+          },
+          {
+            "numberQuestion": 10,
+            "question": "Pregunta 10"
+          }
+        ]
+      }
+  ]
+}
