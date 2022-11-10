@@ -1,16 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./admin.css">
     <title>Admin</title>
-</head>
-<body>
-    <h1>Admin</h1>
+  </head>
+  <body>
+    <!--NAV BAR-->
+    <nav
+      class="navbar navbar-expand-lg bg-ligth"
+      style="background-color: #f5f5f5"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand fs-3 py-3 ms-4" href="/"
+          ><b>Risk Predictor</b></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active fs-5" aria-current="page" >User Admin</a>
+              </li>
+          </ul>
+          <div class="d-flex">
+            <button class="btn btn-danger" type="button" id="btnLogOut">
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container w-75 mt-5">
+      <h2 class="text-center">RIESGO DE DESERCION ESCOLAR</h2>
+
+      <p class="fs-5">Filtros</p>
+      <div class="row">
+        <div class="col">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Generacion</option>
+            <option value="1">2022</option>
+            <option value="2">2023</option>
+            <option value="3">2024</option>
+          </select>
+        </div>
+        <div class="col">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Riesgo</option>
+            <option value="1">Ascendente</option>
+            <option value="2">Descendente</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-5">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">No. cuenta</th>
+              <th scope="col">Nombre completo</th>
+              <th scope="col">Riesgo %</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>20164518</td>
+              <td>Carlos Antonio Ramirez Garcia</td>
+              <td>80 <span class="step yellow"></span></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>20161058</td>
+              <td>Mezly Zahory Mondragon Delgado</td>
+              <td>50 <span class="step green"></span></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <!--Para abarcar 2 celdas
+                <td colspan="2">20162020</td>
+            -->
+            <td>20162020</td>
+            <td>Maria Luisa Garcia Mancilla</td>
+            <td>90 <span class="step"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <button id="btnSignOut">Sign Out</button>
 
     <script src="./index.js"></script>
-</body>
+  </body>
 </html>

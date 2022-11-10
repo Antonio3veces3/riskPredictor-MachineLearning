@@ -1,0 +1,23 @@
+.step {
+  height: 18px;
+  width: 18px;
+  margin-left: 5px;
+  background-color: #d60000;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+/* Mark the active step: */
+.step.yellow {
+  background-color: #d6c100;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.green {
+  background-color: #0aaf26;
+}
+.step.current {
+  background-color: rgb(4, 134, 167);
+}
