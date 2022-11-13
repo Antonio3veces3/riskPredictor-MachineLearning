@@ -10,8 +10,7 @@ const HeaderSection = (title) => {
         <p class="fs-5">Preguntas</p>
       </div>
       <div class="col">
-        <p class="fs-5">Opciones</p>
-        <p>1= Totalmente en desacuerdo y 5 = Totalmente de acuerdo</p>
+        <p class="fs-5">Respuesta</p>
       </div>
     </div>
   </div>

@@ -14,6 +14,8 @@ const divSituacionPersonal = document.getElementById("divSituacionPersonal");
 const nameInput = document.getElementById("nameInput");
 const noCuentaInput = document.getElementById("noCuentaInput");
 const ageInput = document.getElementById("ageInput");
+const inputsProfile = document.getElementsByName('inputProfile');
+
 
 // RADIO BUTTONS
 const step = document.getElementsByClassName("step");
@@ -183,4 +185,11 @@ function getSectionName(index) {
   }
 
   return sectionName;
+}
+
+function getValuesInputs(){
+  for (let i = 0; i < inputsProfile.length; i++) {
+    console.log(inputsProfile[i].value);
+    
+  }
 }

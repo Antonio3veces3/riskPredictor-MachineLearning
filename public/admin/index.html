@@ -37,33 +37,33 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active fs-5" aria-current="page" >User Admin</a>
+                <a class="nav-link active fs-5" aria-current="page" id="adminName"></a>
               </li>
           </ul>
           <div class="d-flex">
             <button class="btn btn-danger" type="button" id="btnLogOut">
-              Login
+              Log out
             </button>
           </div>
         </div>
       </div>
     </nav>
 
-    <div class="container w-75 mt-5">
+    <div class="container w-50 mt-5">
       <h2 class="text-center">RIESGO DE DESERCION ESCOLAR</h2>
 
-      <p class="fs-5">Filtros</p>
-      <div class="row">
+      <p class="fs-5 mt-5">Filtrar por:</p>
+      <div class="row w-50">
         <div class="col">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Generacion</option>
-            <option value="1">2022</option>
-            <option value="2">2023</option>
-            <option value="3">2024</option>
+          <select class="form-select" aria-label="Default select example" id="selectGeneration">
+            <option selected value="">Generacion</option>
+            <option value="2022">2022</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
           </select>
         </div>
         <div class="col">
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" id="selectOrder">
             <option selected>Riesgo</option>
             <option value="1">Ascendente</option>
             <option value="2">Descendente</option>
@@ -76,6 +76,7 @@
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">Generacion</th>
               <th scope="col">No. cuenta</th>
               <th scope="col">Nombre completo</th>
               <th scope="col">Riesgo %</th>
@@ -84,18 +85,21 @@
           <tbody>
             <tr>
               <th scope="row">1</th>
+              <td>2019</td>
               <td>20164518</td>
               <td>Carlos Antonio Ramirez Garcia</td>
               <td>80 <span class="step yellow"></span></td>
             </tr>
             <tr>
               <th scope="row">2</th>
+              <td>2019</td>
               <td>20161058</td>
               <td>Mezly Zahory Mondragon Delgado</td>
               <td>50 <span class="step green"></span></td>
             </tr>
             <tr>
               <th scope="row">3</th>
+              <td>2019</td>
               <!--Para abarcar 2 celdas
                 <td colspan="2">20162020</td>
             -->
@@ -108,7 +112,6 @@
       </div>
     </div>
 
-    <button id="btnSignOut">Sign Out</button>
 
     <script src="./index.js"></script>
   </body>
