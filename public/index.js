@@ -14,24 +14,36 @@ const divSituacionPersonal = document.getElementById("divSituacionPersonal");
 const nameInput = document.getElementById("nameInput");
 const noCuentaInput = document.getElementById("noCuentaInput");
 const ageInput = document.getElementById("ageInput");
-const inputsProfile = document.getElementsByName('inputProfile');
+const generacionInput = document.getElementById("generacionInput");
 
+const inputsProfile = document.getElementsByName("inputProfile");
 
 // RADIO BUTTONS
 const step = document.getElementsByClassName("step");
 
 let currentTab = 0;
 
+let data = {
+
+};
+
+let testData= {
+  name: "",
+  noCuenta: "",
+  age: 0,
+  generation: "",
+  sex: "",
+  answers: {
+    Family: {},
+    Scholar: {},
+    SocioEco: {},
+    Personal: {},
+  }
+
+}
+
 const contentForm = new ContentForm();
 contentForm.loadDataForm();
-
-// loadDataSection(contentForm.sectionFamiliar(), divSituacionFamiliar);
-
-// loadDataSection(contentForm.sectionEscolar(), divSituacionEscolar);
-
-// loadDataSection(contentForm.sectionSocioEco(), divSituacionSocioEco);
-
-// loadDataSection(contentForm.sectionPersonal(), divSituacionPersonal);
 
 showCurrentStep(currentTab);
 
@@ -42,7 +54,7 @@ btnLogin.addEventListener("click", () => {
 
 btnNext.addEventListener("click", async () => {
   await getAnswersSection(currentTab);
-  await getInfoProfile();
+  await saveInfoProfile();
   currentTab += 1;
   nextPrev(currentTab);
 });
@@ -54,33 +66,78 @@ btnPrevious.addEventListener("click", () => {
 
 btnSubmit.addEventListener("click", async () => {
   await getAnswersSection(currentTab);
-  await getInfoProfile();
+  await saveInfoProfile();
+  //const allAnswers = await getValuesInputs();
+
+  
+  fetch("http://localhost:8080/predictor", {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(testData),
+  })
+    .then((res) => res.json())
+    .then(console.log);
 });
 
 // FUNCTIONS
+async function getValuesInputs() {
+  data.name = await localStorage.getItem("name");
+  data.noCuenta = await localStorage.getItem("noCuenta");
+  data.age = await localStorage.getItem("age");
+  data.generacion = await localStorage.getItem("generacion");
+  data.sex = await localStorage.getItem("sex");
+  data.answers= {};
+  data.answers.family = await getAnswersOfLocalStorage("Family")
+  data.answers.scholar = await getAnswersOfLocalStorage("Scholar")
+  data.answers.SocioEsco = await getAnswersOfLocalStorage("SocioEco")
+  data.answers.Personal = await getAnswersOfLocalStorage("Personal")
+  return data;
+  // {
+  //   name: inputsProfile[0].value,
+  //   noCuenta: inputsProfile[1].value,
+  //   edad: inputsProfile[2].value,
+  //   generation: inputsProfile[3].value,
+  //   sex:  await getSex(),
+  // }
 
+  // for (let i = 0; i < inputsProfile.length; i++) {
+  //   console.log(inputsProfile[i].value);
+  // }
+}
 
-async function getInfoProfile() {
+async function saveInfoProfile() {
+  testData.name = nameInput.value;
+  testData.noCuenta= noCuentaInput.value;
+  testData.age= parseInt(ageInput.value);
+  testData.generation= parseInt(generacionInput.value);
+
   await localStorage.setItem(`name`, nameInput.value);
   await localStorage.setItem(`noCuenta`, noCuentaInput.value);
   await localStorage.setItem(`age`, ageInput.value);
   await getSex();
-  
+  await localStorage.setItem(`generacion`, generacionInput.value);
 }
 
-async  function getSex() {
+async function getSex() {
   const options = document.getElementsByName("radioSex");
-  console.log(options);
+  let sex;
   options.forEach(async (option) => {
     if (option.checked) {
+      sex = option.value;
       await localStorage.setItem(`sex`, option.value);
+      testData.sex= option.value;
       return;
     }
   });
+
+  return sex;
 }
 async function getAnswersSection(curentStep) {
   for (let i = 1; i <= 10; i++) {
-    await getAnswers(i, currentTab);
+    await getAnswers(i, curentStep);
   }
 }
 
@@ -95,6 +152,7 @@ function getAnswers(noQuestion, group) {
         `Question${noQuestion}${groupName}`,
         option.value
       );
+      testData.answers[`${groupName}`][`q${noQuestion}`] = option.value;
       return;
     }
   });
@@ -174,7 +232,7 @@ function getSectionName(index) {
       sectionName = "Scholar";
       break;
     case 2:
-      sectionName = "SocioEsco";
+      sectionName = "SocioEco";
       break;
     case 3:
       sectionName = "Personal";
@@ -187,9 +245,10 @@ function getSectionName(index) {
   return sectionName;
 }
 
-function getValuesInputs(){
-  for (let i = 0; i < inputsProfile.length; i++) {
-    console.log(inputsProfile[i].value);
-    
+async function getAnswersOfLocalStorage(groupName) {
+  let answers = {}
+  for (let i = 1; i <=10; i++) {
+    answers[`q${i}`] = parseInt(await localStorage.getItem(`Question${i}${groupName}`), 10)
   }
+  return answers;
 }

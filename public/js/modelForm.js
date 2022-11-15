@@ -104,7 +104,7 @@ class ContentForm {
   sectionSocioEco() {
     return {
       numberSection: 3,
-      group: "SocioEsco",
+      group: "SocioEco",
       section: "Situacion socioeconomica",
       questions: [
         {

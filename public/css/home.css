@@ -14,7 +14,7 @@ h2{
     width: 70%;
 }
 
-#divTitleSection{
+#divTitleSection, #divSectionProfile{
     color: #2A2C24;
     height: 100%;
     padding: 2px;

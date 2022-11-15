@@ -8,7 +8,8 @@ class Server {
     this.port = process.env.PORT;
     this.hostname = process.env.HOSTNAME;
     this.paths = {
-        auth: "/auth"
+        auth: "/auth",
+        predictor: "/predictor"
     };
     this.connectDB();
     this.middleware();
@@ -26,6 +27,7 @@ class Server {
 
   routes(){
     this.app.use(this.paths.auth, require('../routes/auth.routes'))
+    this.app.use(this.paths.predictor, require('../routes/predictor.routes'))
   }
   listener() {
     this.app.listen(this.port, this.hostname, () => {
