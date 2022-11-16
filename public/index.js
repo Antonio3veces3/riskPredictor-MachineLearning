@@ -51,6 +51,8 @@ contentForm.loadDataForm();
 
 showCurrentStep(currentTab);
 
+
+
 // BTN LISTENERS
 btnLogin.addEventListener("click", () => {
   window.location = "login";
@@ -59,6 +61,8 @@ btnLogin.addEventListener("click", () => {
 btnNext.addEventListener("click", async () => {
   await getAnswersSection(currentTab);
   await saveInfoProfile();
+  if(!validateAnswersRequired(currentTab) || !validateInfoProfile())
+  return alert("Debes contestar todas las preguntas de esta sección");
   currentTab += 1;
   nextPrev(currentTab);
 });
@@ -71,6 +75,8 @@ btnPrevious.addEventListener("click", () => {
 btnSubmit.addEventListener("click", async () => {
   await getAnswersSection(currentTab);
   await saveInfoProfile();
+  if(!validateAnswersRequired(currentTab) || !validateInfoProfile())
+  return alert("Debes contestar todas las preguntas de esta sección");
   //const allAnswers = await getValuesInputs();
 
   
@@ -106,24 +112,13 @@ async function getValuesInputs() {
   data.answers.SocioEsco = await getAnswersOfLocalStorage("SocioEco")
   data.answers.Personal = await getAnswersOfLocalStorage("Personal")
   return data;
-  // {
-  //   name: inputsProfile[0].value,
-  //   noCuenta: inputsProfile[1].value,
-  //   edad: inputsProfile[2].value,
-  //   generation: inputsProfile[3].value,
-  //   sex:  await getSex(),
-  // }
-
-  // for (let i = 0; i < inputsProfile.length; i++) {
-  //   console.log(inputsProfile[i].value);
-  // }
 }
 
 async function saveInfoProfile() {
   testData.name = nameInput.value;
   testData.noCuenta= noCuentaInput.value;
   testData.age= parseInt(ageInput.value);
-  testData.generation= parseInt(generacionInput.value);
+  testData.generation= generacionInput.value;
 
   await localStorage.setItem(`name`, nameInput.value);
   await localStorage.setItem(`noCuenta`, noCuentaInput.value);
@@ -262,4 +257,19 @@ async function getAnswersOfLocalStorage(groupName) {
     answers[`q${i}`] = parseInt(await localStorage.getItem(`Question${i}${groupName}`), 10)
   }
   return answers;
+}
+
+function validateAnswersRequired(currentSection){
+  let sectionName = getSectionName(currentSection)
+  if((Object.keys(testData.answers[`${sectionName}`]).length) != 10)
+  return false;
+  else
+  return true;
+}
+
+function validateInfoProfile(){
+  if( testData.name == "" || testData.noCuenta == "" || testData.age == NaN || testData.generation == "" || testData.sex == ""  )
+  return false;
+  else
+  return true;
 }
