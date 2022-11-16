@@ -65,13 +65,32 @@
     <!--CONTAINER TEST-->
     <div class="container mt-1 p-5 w-75" id="divContainerTest">
       <!--TITLE-->
-      <div class="container-sm text-center mb-4" id="divTitleTest">
+      <div class="container-sm text-center mb-4 shadow rounded" id="divTitleTest">
         <h2>Test para predecir el riesgo de deserción escolar</h2>
+      </div>
+
+      <div class="modal shadow-sm p-3 mb-5 bg-body rounded"" tabindex="-1" role="dialog" id="divModalResult">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Tu porcentaje de riesgo de desercion escolar es</h5>
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnCloseResult" style="background-color: #e09d99;">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
+            </div>
+            <div class="modal-body text-center" id="divTextResult" >
+              <h1 id="textResult">81 %</h1>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal" id="btnCloseResult">Close</button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- PROFILE SECTION-->
       <div>
-        <div id="divSectionProfile" class="text-center mb-3">
+        <div id="divSectionProfile" class="text-center mb-3 mt-5 shadow rounded">
           <h3>Perfil</h3>
         </div>
         <!-- NOMBRE COMPLETO-->
@@ -83,7 +102,6 @@
               class="form-control w-75"
               placeholder="Apellidos, nombre"
               id="nameInput"
-              autocomplete="on"
               name="inputProfile"
             />
           </div>
@@ -94,7 +112,6 @@
               placeholder="No. cuenta"
               class="form-control w-50"
               id="noCuentaInput"
-              autocomplete="on"
               name="inputProfile"
             />
           </div>
@@ -111,7 +128,6 @@
               type="number"
               id="ageInput"
               class="form-control w-50"
-              autocomplete="on"
               placeholder="Años"
               name="inputProfile"
             />
@@ -128,7 +144,6 @@
               type="text"
               id="generacionInput"
               class="form-control w-50 me-2"
-              autocomplete="on"
               placeholder="Año"
               name="inputProfile"
             />
@@ -162,6 +177,7 @@
             </div>
           </div>
         </div>
+
         <!-- INSTRUCTIONS-->
         <div class="mt-3">
           <p class="fs-5"><b>Intrucciones</b></p>
@@ -179,7 +195,7 @@
           </ol>
         </div>
         <!-- SITUACION FAMILIAR-->
-        <div id="divSituacionFamiliar">
+        <div id="divSituacionFamiliar" class="shadow-sm rounded">
           <!--
           <div id="divTitleSection" class="text-center mt-2">
             <h3>Situacion familiar</h3>
@@ -201,11 +217,11 @@
           <!-- PREGUNTAS -->
         </div>
 
-        <div id="divSituacionEscolar" style="display: none"></div>
+        <div id="divSituacionEscolar" style="display: none" class="shadow-sm rounded"></div>
 
-        <div id="divSituacionSocioEco" style="display: none"></div>
+        <div id="divSituacionSocioEco" style="display: none" class="shadow-sm rounded"></div>
 
-        <div id="divSituacionPersonal" style="display: none"></div>
+        <div id="divSituacionPersonal" style="display: none" class="shadow-sm rounded"></div>
 
         <div style="text-align: center; margin-top: 10px">
           <span class="step"></span>

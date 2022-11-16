@@ -2,7 +2,6 @@
   height: 18px;
   width: 18px;
   margin-left: 5px;
-  background-color: #d60000;
   border: none;
   border-radius: 50%;
   display: inline-block;
@@ -20,4 +19,8 @@
 }
 .step.current {
   background-color: rgb(4, 134, 167);
+}
+
+.step.red {
+  background-color: #d60000;
 }

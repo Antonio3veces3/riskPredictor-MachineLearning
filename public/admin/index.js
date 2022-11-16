@@ -1,30 +1,94 @@
 // ADMIN NAME
-const adminName = document.getElementById('adminName');
+const adminName = document.getElementById("adminName");
 
 // BUTTONS
-const btnLogOut = document.getElementById('btnLogOut');
+const btnLogOut = document.getElementById("btnLogOut");
 
 // FILTERS
-const selectGeneration = document.getElementById('selectGeneration');
-const selectOrder = document.getElementById('selectOrder');
+const selectGeneration = document.getElementById("selectGeneration");
+const selectOrder = document.getElementById("selectOrder");
 
-const userAdmin = localStorage.getItem('admin')
-if( !userAdmin){
-    window.location = 'http://localhost:8080/';
-}else{
-    adminName.innerText = `Admin - ${userAdmin}`;
+// T BODY TABLE
+const tBodyTable = document.getElementById("tBodyTable");
+
+const userAdmin = localStorage.getItem("admin");
+if (!userAdmin) {
+  window.location = "http://localhost:8080/";
+} else {
+  adminName.innerText = `Admin - ${userAdmin}`;
 }
 
-selectGeneration.addEventListener('change',()=>{
-    let selectedOption = selectGeneration.options[selectGeneration.selectedIndex].value;
-    console.log(selectedOption);
-})
-selectOrder.addEventListener('change',()=>{
-    let selectedOption = selectOrder.options[selectOrder.selectedIndex].value;
-    console.log(selectedOption);
-})
+let selectedOptGeneracion =
+  selectGeneration.options[selectGeneration.selectedIndex].value;
+let selectedOptionOrder = selectOrder.options[selectOrder.selectedIndex].value;
 
-btnLogOut.addEventListener('click',()=>{
-    localStorage.clear();
-    window.location = 'http://localhost:8080/';
-})
+getDataTable(selectedOptGeneracion, selectedOptionOrder);
+
+// EVENT LISTENER
+
+selectGeneration.addEventListener("change", () => {
+  let generacion =
+    selectGeneration.options[selectGeneration.selectedIndex].value;
+  let order = selectOrder.options[selectOrder.selectedIndex].value;
+  getDataTable(generacion, order);
+});
+
+selectOrder.addEventListener("change", () => {
+    let order = selectOrder.options[selectOrder.selectedIndex].value;
+    let generacion =
+    selectGeneration.options[selectGeneration.selectedIndex].value;
+    getDataTable(generacion, order);
+});
+
+btnLogOut.addEventListener("click", () => {
+  localStorage.clear();
+  window.location = "http://localhost:8080/";
+});
+
+function getDataTable(generacion, order) {
+  fetch(`http://localhost:8080/predictor/${generacion}/${order}`, {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      renderDataTable(res);
+      // res.forEach(({name, noCuenta, generation, risk }) => {
+      //     console.log({
+      //         name,
+      //         noCuenta,
+      //         generacion,
+      //         risk
+      //     });
+      // });
+    })
+    .catch((err) => console.error(err));
+}
+
+function renderDataTable(students) {
+  let html = ``;
+  students.forEach(({ name, noCuenta, generation, risk }, index) => {
+    html += `
+        <tr>
+            <th scope="row">${index + 1}</th>
+            <td>${generation}</td>
+            <td>${noCuenta}</td>
+            <td>${name}</td>
+            <td>${risk} <span class="${getRiskColorFlag(risk)}"></span></td>
+        </tr>
+        `;
+  });
+  tBodyTable.innerHTML = html;
+}
+
+function getRiskColorFlag(risk) {
+  if (risk < 31) {
+    return "step green";
+  } else {
+    if (risk < 76) return "step yellow";
+    else return "step red";
+  }
+}

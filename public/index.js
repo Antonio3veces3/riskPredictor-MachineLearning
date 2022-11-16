@@ -3,12 +3,16 @@ const btnLogin = document.getElementById("btnLogin");
 const btnNext = document.getElementById("btnNext");
 const btnPrevious = document.getElementById("btnPrevious");
 const btnSubmit = document.getElementById("btnSubmit");
+const btnCloseResult = document.getElementById("btnCloseResult");
+
 
 //DIV FORM SECTIONS
 const divSituacionFamiliar = document.getElementById("divSituacionFamiliar");
 const divSituacionEscolar = document.getElementById("divSituacionEscolar");
 const divSituacionSocioEco = document.getElementById("divSituacionSocioEco");
 const divSituacionPersonal = document.getElementById("divSituacionPersonal");
+const divModalResult = document.getElementById("divModalResult");
+
 
 // INPUTS
 const nameInput = document.getElementById("nameInput");
@@ -79,8 +83,15 @@ btnSubmit.addEventListener("click", async () => {
     body: JSON.stringify(testData),
   })
     .then((res) => res.json())
-    .then(console.log);
+    .then(res => {
+      console.log(res);
+    });
+    divModalResult.style.display= "block";
 });
+
+btnCloseResult.addEventListener('click', ()=>{
+  divModalResult.style.display= 'none';
+})
 
 // FUNCTIONS
 async function getValuesInputs() {

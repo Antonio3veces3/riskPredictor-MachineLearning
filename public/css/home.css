@@ -38,6 +38,26 @@ h2{
     justify-content: start;
 }
 
+#divTextResult{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+#textResult{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  width: 11rem;
+  height: 11rem;
+  align-content: center;
+  border-radius: 50%;
+  background-color: #E8E19B;
+}
 /* Make circles that indicate the steps of the form: */
 .step {
     height: 15px;

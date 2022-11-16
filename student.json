@@ -5,7 +5,7 @@
     "sexo": "H",
     "generacion": "2019",
     "answers": {
-        "familiar":{
+        "Family":{
             "q1": 3,
             "q2": 4,
             "q3": 2,
@@ -17,7 +17,7 @@
             "q9": 5,
             "q10": 5
         },
-        "escolar":{
+        "Scholar":{
             "q1": 3,
             "q2": 4,
             "q3": 2,
@@ -29,7 +29,7 @@
             "q9": 5,
             "q10": 5
         },
-        "socioeconomica":{
+        "SocioEco":{
             "q1": 3,
             "q2": 4,
             "q3": 2,
@@ -41,7 +41,7 @@
             "q9": 5,
             "q10": 5
         },
-        "personal":{
+        "Personal":{
             "q1": 3,
             "q2": 4,
             "q3": 2,
