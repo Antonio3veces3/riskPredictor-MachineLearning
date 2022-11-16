@@ -3,7 +3,7 @@ const { MLprediction } = require("../AI/ml");
 const { StudentModel } = require("../models/student.model");
 
 const POSTPrediction = async (req = request, res = response) => {
-  req.body.risk = 60;
+  req.body.risk = 70;
   //const prediction= await MLprediction();
   const newStudent = new StudentModel(req.body);
   
