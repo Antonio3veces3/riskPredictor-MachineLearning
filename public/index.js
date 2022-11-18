@@ -25,6 +25,9 @@ const inputsProfile = document.getElementsByName("inputProfile");
 // RADIO BUTTONS
 const step = document.getElementsByClassName("step");
 
+// TEXT 
+const textResult= document.getElementById("textResult");
+
 let currentTab = 0;
 
 let data = {
@@ -90,7 +93,7 @@ btnSubmit.addEventListener("click", async () => {
   })
     .then((res) => res.json())
     .then(res => {
-      console.log(res);
+      textResult.innerText= `${res.prediction} %`
     });
     divModalResult.style.display= "block";
 });
@@ -158,7 +161,7 @@ function getAnswers(noQuestion, group) {
         `Question${noQuestion}${groupName}`,
         option.value
       );
-      testData.answers[`${groupName}`][`q${noQuestion}`] = option.value;
+      testData.answers[`${groupName}`][`q${noQuestion}`] = parseInt(option.value) / 5;
       return;
     }
   });
