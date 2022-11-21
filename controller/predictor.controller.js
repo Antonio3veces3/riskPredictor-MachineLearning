@@ -24,8 +24,9 @@ const POSTPrediction = async (req = request, res = response) => {
     // const savedStudent = await newStudent.save();
     // res.send(`Student ${savedStudent.name} is saved successfully`)
     let prediction = await MLprediction(data);
-    req.body.risk = 70;
+    req.body.risk = parseFloat(prediction);
     const newStudent = new StudentModel(req.body);
+    await newStudent.save();
     res.json({
       prediction: parseFloat(prediction)
     })

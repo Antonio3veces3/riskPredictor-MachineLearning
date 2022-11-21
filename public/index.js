@@ -5,14 +5,12 @@ const btnPrevious = document.getElementById("btnPrevious");
 const btnSubmit = document.getElementById("btnSubmit");
 const btnCloseResult = document.getElementById("btnCloseResult");
 
-
 //DIV FORM SECTIONS
 const divSituacionFamiliar = document.getElementById("divSituacionFamiliar");
 const divSituacionEscolar = document.getElementById("divSituacionEscolar");
 const divSituacionSocioEco = document.getElementById("divSituacionSocioEco");
 const divSituacionPersonal = document.getElementById("divSituacionPersonal");
 const divModalResult = document.getElementById("divModalResult");
-
 
 // INPUTS
 const nameInput = document.getElementById("nameInput");
@@ -25,16 +23,14 @@ const inputsProfile = document.getElementsByName("inputProfile");
 // RADIO BUTTONS
 const step = document.getElementsByClassName("step");
 
-// TEXT 
-const textResult= document.getElementById("textResult");
+// TEXT
+const textResult = document.getElementById("textResult");
 
 let currentTab = 0;
 
-let data = {
+let data = {};
 
-};
-
-let testData= {
+let testData = {
   name: "",
   noCuenta: "",
   age: 0,
@@ -45,16 +41,13 @@ let testData= {
     Scholar: {},
     SocioEco: {},
     Personal: {},
-  }
-
-}
+  },
+};
 
 const contentForm = new ContentForm();
 contentForm.loadDataForm();
 
 showCurrentStep(currentTab);
-
-
 
 // BTN LISTENERS
 btnLogin.addEventListener("click", () => {
@@ -64,8 +57,8 @@ btnLogin.addEventListener("click", () => {
 btnNext.addEventListener("click", async () => {
   await getAnswersSection(currentTab);
   await saveInfoProfile();
-  if(!validateAnswersRequired(currentTab) || !validateInfoProfile())
-  return alert("Debes contestar todas las preguntas de esta sección");
+  if (!validateAnswersRequired(currentTab) || !validateInfoProfile())
+    return alert("Debes contestar todas las preguntas de esta sección");
   currentTab += 1;
   nextPrev(currentTab);
 });
@@ -78,11 +71,10 @@ btnPrevious.addEventListener("click", () => {
 btnSubmit.addEventListener("click", async () => {
   await getAnswersSection(currentTab);
   await saveInfoProfile();
-  if(!validateAnswersRequired(currentTab) || !validateInfoProfile())
-  return alert("Debes contestar todas las preguntas de esta sección");
+  if (!validateAnswersRequired(currentTab) || !validateInfoProfile())
+    return alert("Debes contestar todas las preguntas de esta sección");
   //const allAnswers = await getValuesInputs();
 
-  
   fetch("http://localhost:8080/predictor", {
     method: "POST",
     mode: "cors",
@@ -92,57 +84,36 @@ btnSubmit.addEventListener("click", async () => {
     body: JSON.stringify(testData),
   })
     .then((res) => res.json())
-    .then(res => {
-      textResult.innerText= `${res.prediction} %`
+    .then((res) => {
+      textResult.innerText = `${res.prediction} %`;
     });
-    divModalResult.style.display= "block";
+  divModalResult.style.display = "block";
 });
 
-btnCloseResult.addEventListener('click', ()=>{
-  divModalResult.style.display= 'none';
-})
+btnCloseResult.addEventListener("click", () => {
+  divModalResult.style.display = "none";
+  location.href = "http://localhost:8080/";
+});
 
 // FUNCTIONS
-async function getValuesInputs() {
-  data.name = await localStorage.getItem("name");
-  data.noCuenta = await localStorage.getItem("noCuenta");
-  data.age = await localStorage.getItem("age");
-  data.generacion = await localStorage.getItem("generacion");
-  data.sex = await localStorage.getItem("sex");
-  data.answers= {};
-  data.answers.family = await getAnswersOfLocalStorage("Family")
-  data.answers.scholar = await getAnswersOfLocalStorage("Scholar")
-  data.answers.SocioEsco = await getAnswersOfLocalStorage("SocioEco")
-  data.answers.Personal = await getAnswersOfLocalStorage("Personal")
-  return data;
-}
 
 async function saveInfoProfile() {
   testData.name = nameInput.value;
-  testData.noCuenta= noCuentaInput.value;
-  testData.age= parseInt(ageInput.value);
-  testData.generation= generacionInput.value;
-
-  await localStorage.setItem(`name`, nameInput.value);
-  await localStorage.setItem(`noCuenta`, noCuentaInput.value);
-  await localStorage.setItem(`age`, ageInput.value);
+  testData.noCuenta = noCuentaInput.value;
+  testData.age = parseInt(ageInput.value);
+  testData.generation = generacionInput.value;
   await getSex();
-  await localStorage.setItem(`generacion`, generacionInput.value);
 }
 
 async function getSex() {
   const options = document.getElementsByName("radioSex");
   let sex;
-  options.forEach(async (option) => {
+  options.forEach((option) => {
     if (option.checked) {
-      sex = option.value;
-      await localStorage.setItem(`sex`, option.value);
-      testData.sex= option.value;
+      testData.sex = option.value;
       return;
     }
   });
-
-  return sex;
 }
 async function getAnswersSection(curentStep) {
   for (let i = 1; i <= 10; i++) {
@@ -155,13 +126,10 @@ function getAnswers(noQuestion, group) {
   const options = document.getElementsByName(
     `question${noQuestion}${groupName}`
   );
-  options.forEach(async (option) => {
+  options.forEach((option) => {
     if (option.checked) {
-      await localStorage.setItem(
-        `Question${noQuestion}${groupName}`,
-        option.value
-      );
-      testData.answers[`${groupName}`][`q${noQuestion}`] = parseInt(option.value) / 5;
+      testData.answers[`${groupName}`][`q${noQuestion}`] =
+        parseInt(option.value) / 5;
       return;
     }
   });
@@ -254,25 +222,21 @@ function getSectionName(index) {
   return sectionName;
 }
 
-async function getAnswersOfLocalStorage(groupName) {
-  let answers = {}
-  for (let i = 1; i <=10; i++) {
-    answers[`q${i}`] = parseInt(await localStorage.getItem(`Question${i}${groupName}`), 10)
-  }
-  return answers;
+function validateAnswersRequired(currentSection) {
+  let sectionName = getSectionName(currentSection);
+  if (Object.keys(testData.answers[`${sectionName}`]).length != 10)
+    return false;
+  else return true;
 }
 
-function validateAnswersRequired(currentSection){
-  let sectionName = getSectionName(currentSection)
-  if((Object.keys(testData.answers[`${sectionName}`]).length) != 10)
-  return false;
-  else
-  return true;
-}
-
-function validateInfoProfile(){
-  if( testData.name == "" || testData.noCuenta == "" || testData.age == NaN || testData.generation == "" || testData.sex == ""  )
-  return false;
-  else
-  return true;
+function validateInfoProfile() {
+  if (
+    testData.name == "" ||
+    testData.noCuenta == "" ||
+    testData.age == NaN ||
+    testData.generation == "" ||
+    testData.sex == ""
+  )
+    return false;
+  else return true;
 }
