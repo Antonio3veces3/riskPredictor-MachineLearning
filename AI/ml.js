@@ -186,7 +186,7 @@ const MLprediction = async (data) => {
     ],
     configTraining
   );
-
+//
   let { highRisk } = await net.run(data);
   console.log(highRisk);
   return parseFloat(highRisk * 100).toFixed(2);
