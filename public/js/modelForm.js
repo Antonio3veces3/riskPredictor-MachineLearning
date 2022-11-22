@@ -9,7 +9,7 @@ class ContentForm {
       questions: [
         {
           numberQuestion: 1,
-          question: "¿Frecuentemente cambias de domicilio?",
+          question: "¿Tus ambos padres trabajan?",
         },
         {
           numberQuestion: 2,
@@ -25,7 +25,7 @@ class ContentForm {
         },
         {
           numberQuestion: 5,
-          question: "¿Tu familia influye en tus decisiones para tu formación profesional?",
+          question: "¿Elegiste esta carrera porque tu familia o alguien más te lo dijo?",
         },
         {
           numberQuestion: 6,
@@ -41,7 +41,7 @@ class ContentForm {
         },
         {
           numberQuestion: 9,
-          question: "¿En tu familia hay casos de enfermedades genéticas (hereditarias)?",
+          question: "¿Tienes la responsbilidad de cuidar a algún familiar enfermo?",
         },
         {
           numberQuestion: 10,
@@ -63,7 +63,7 @@ class ContentForm {
         },
         {
           numberQuestion: 2,
-          question: "¿Has reprobado algunas de las siguientes materias? (matemáticas, física, programación, informática, sistemas embebidos, circuitos eléctricos)",
+          question: "¿Has llegado a extraordinario o regularización en alguna de las siguientes materias? (matemáticas, física, programación, informática, sistemas embebidos, circuitos eléctricos)",
         },
         {
           numberQuestion: 3,
@@ -91,7 +91,7 @@ class ContentForm {
         },
         {
           numberQuestion: 9,
-          question: "¿En tu bachillerato de procedencia llevaste alguna materia similar a las del plan de estudios de la Ing. En Tecnologías de Internet?",
+          question: "¿En tu bachillerato de procedencia estuviste en algún área de tecnología?",
         },
         {
           numberQuestion: 10,
@@ -109,19 +109,19 @@ class ContentForm {
       questions: [
         {
           numberQuestion: 1,
-          question: "¿Tuviste que mudarte de otro Estado o Municipio para estudiar la carrera en Ing. En Tecnologías de internet? (Eres foráneo)",
+          question: "¿Eres foraneo?",
         },
         {
           numberQuestion: 2,
-          question: "¿Hay problemas económicos en tu familia que puedan afectar tu permanencia en la Facultad?",
+          question: "¿Existen dificultades económicas en tu familia que puedan afectar tu permanencia en la Facultad?",
         },
         {
           numberQuestion: 3,
-          question: "¿Actualmente trabajas ( mas de 4hrs ) para poder pagar tus estudios?",
+          question: "¿Actualmente trabajas  para poder pagar tus estudios?",
         },
         {
           numberQuestion: 4,
-          question: "¿Se te dificulta trasladarte todos los días para asistir a clases? (Por distancia o por un gasto elevado)",
+          question: "¿Se te dificulta trasladarte todos los días para asistir a clases porque es un gasto elevado?",
         },
         {
           numberQuestion: 5,
@@ -129,7 +129,7 @@ class ContentForm {
         },
         {
           numberQuestion: 6,
-          question: "Conforme a tu estado civil, ¿Eres soltero?",
+          question: "¿Actualmente vives con pareja o estas casado?",
         },
         {
           numberQuestion: 7,
@@ -159,7 +159,7 @@ class ContentForm {
       questions: [
         {
           numberQuestion: 1,
-          question: "¿Tienes alguna enfermedad que te impida cumplir con las asignaturas de la escuela?",
+          question: "¿Tienes alguna enfermedad/discapacidad que te impida cumplir con las asignaturas de la escuela?",
         },
         {
           numberQuestion: 2,
@@ -171,19 +171,19 @@ class ContentForm {
         },
         {
           numberQuestion: 4,
-          question: "¿Frecuentemente tienes problemas de depresión?",
+          question: "¿Tienes algún problema de ansiedad y/o depresion?",
         },
         {
           numberQuestion: 5,
-          question: "¿Tienes algún problema de ansiedad?",
+          question: "¿Se te dificulta asistir a clases por la distancia entre tu casa y la Universidad?",
         },
         {
           numberQuestion: 6,
-          question: "¿Te han detectado algún problema psicológico?",
+          question: "¿Te han detectado algún transtorno psicológico?",
         },
         {
           numberQuestion: 7,
-          question: "¿En un futuro te ves como una persona superada profesionalmente?",
+          question: "¿En un futuro aspiras a ser un profesionista?",
         },
         {
           numberQuestion: 8,
