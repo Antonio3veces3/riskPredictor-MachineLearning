@@ -85,10 +85,10 @@ function renderDataTable(students) {
 }
 
 function getRiskColorFlag(risk) {
-  if (risk < 31) {
+  if (risk < 26) {
     return "step green";
   } else {
-    if (risk < 76) return "step yellow";
+    if (risk < 66) return "step yellow";
     else return "step red";
   }
 }

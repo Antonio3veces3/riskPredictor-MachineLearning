@@ -88,6 +88,19 @@ btnSubmit.addEventListener("click", async () => {
       textResult.innerText = `${res.prediction} %`;
     });
   divModalResult.style.display = "block";
+  testData = {
+    name: "",
+    noCuenta: "",
+    age: 0,
+    generation: "",
+    sex: "",
+    answers: {
+      Family: {},
+      Scholar: {},
+      SocioEco: {},
+      Personal: {},
+    },
+  };
 });
 
 btnCloseResult.addEventListener("click", () => {

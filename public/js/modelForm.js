@@ -202,12 +202,12 @@ class ContentForm {
   }
 
   loadDataForm() {
-    loadDataSection(contentForm.sectionFamiliar(), divSituacionFamiliar);
+    loadDataSection(this.sectionFamiliar(), divSituacionFamiliar);
 
-    loadDataSection(contentForm.sectionEscolar(), divSituacionEscolar);
+    loadDataSection(this.sectionEscolar(), divSituacionEscolar);
 
-    loadDataSection(contentForm.sectionSocioEco(), divSituacionSocioEco);
+    loadDataSection(this.sectionSocioEco(), divSituacionSocioEco);
 
-    loadDataSection(contentForm.sectionPersonal(), divSituacionPersonal);
+    loadDataSection(this.sectionPersonal(), divSituacionPersonal);
   }
 }

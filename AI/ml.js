@@ -20,7 +20,7 @@ const MLprediction = async (data) => {
 
   net.train(
     [
-      // ALTO RIESGO
+      // PERFILES DE ALTO RIESGO
       {
         input: [
           0.2, 0.2, 0.2, 0.2, 1, 0.2, 1, 0.2, 1, 0.2, 0.2, 1, 0.2, 1, 0.2, 1,
@@ -102,7 +102,7 @@ const MLprediction = async (data) => {
         output: { highRisk: 1 },
       },
 
-      // BAJO RIESGO
+      // PERFILES DE BAJO RIESGO
       {
         input: [
           1, 1, 1, 1, 0.2, 1, 0.2, 1, 0.2, 1, 1, 0.2, 1, 0.2, 1, 0.2, 1, 1, 1,
